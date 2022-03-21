@@ -1,38 +1,24 @@
 const express = require('express');
 const app = express();
 const cors = require('cors');
-const {Client} = require('pg');
+const db = require('./dbConfig');
+
+db.authenticate()
+  .then(() => console.log('Database connected...'))
+  .catch(err => console.log('Error: ' + err))
+
+
+const port = process.env.PORT || 5000;
+let baseUrl = `http://localhost:${port}/`;
+
+const itemRouter = require('./routes/Item')
 // const dotenv = require('dotenv').config();
-const client = new Client({
-    user: process.env.POSTGRES_USER,
-    host: 'db',
-    database: process.env.POSTGRES_DB,
-    password: process.env.POSTGRES_PASSWORD,
-    port: process.env.POSTGRES_PORT,
-  })
 
 
 app.use(cors()); 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+app.use('/items', itemRouter);
 
-
-// const client = new Client({
-//     user: 'postgres',
-//     host: 'db',
-//     database: 'shoppingify',
-//     password: 'postgres',
-//     port: 5432,
-//   })
-client.connect(err => {
-  if (err) {
-    console.error('connection error', err.stack)
-  } else {
-    console.log('connected')
-  }
-})
-  client.query('SELECT NOW()', (err, res) => {
-    console.log(err, res)
-    client.end()
-  })
+app.listen(port, () => console.log(`Listening on port ${port}`));
