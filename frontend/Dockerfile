@@ -1,4 +1,4 @@
-FROM node:16
+FROM node:alpine
 
 
 # Set working directory to app directory
@@ -8,10 +8,10 @@ WORKDIR /app
 # install dependencies
 COPY package.json .
 RUN npm install
-RUN chown -R node.node /app/node_modules
+# RUN chown -R node.node /app/node_modules
 # Copy app source code
 COPY . .
 
 #Expose port and start application
-EXPOSE 5000
+EXPOSE 3000
 CMD [ "npm", "run", "start"]

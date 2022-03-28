@@ -1,12 +1,10 @@
-const { DataTypes } = require('sequelize');
+const { DataTypes, Sequelize } = require('sequelize');
 const db = require('../dbConfig');
-// We export a function that defines the model.
-// This function will automatically receive as parameter the Sequelize connection object.
+const Category = require('./Categories');
 // User story: I can add a new item with name, category, note, and image.
 const Item = db.define('item', {
-		// The following specification of the 'id' attribute could be omitted
-		// since it is the default.
-		id: {
+
+		item_id: {
 			allowNull: false,
 			autoIncrement: true,
 			primaryKey: true,
@@ -16,9 +14,9 @@ const Item = db.define('item', {
 			allowNull: false,
 			type: DataTypes.STRING,
 		},
-		category: {
+		category_id: {
 			allowNull: false,
-			type: DataTypes.STRING
+			type: DataTypes.INTEGER
 		},
         note: {
             allowNull: false,
@@ -30,8 +28,13 @@ const Item = db.define('item', {
         }
 	});
 
-Item.sync().then(() => {
-    console.log('table created');
-  });
+	// Item.belongsTo(Category)
+	Category.hasMany(Item,{as: 'items', foreignKey: 'category_id'})
+	Item.belongsTo(Category)
+	Item.sync().then(() => {
+		console.log('Item table created');
+	});
 
 module.exports = Item;
+
+

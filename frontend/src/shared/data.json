@@ -1,0 +1,27 @@
+{
+    "items": [{
+        "item_id": "",
+		"name": "",
+		"category_id": "",
+        "note": "",
+        "image": ""
+    }
+    ],
+    "categories": [{
+        "category": "",
+        "name": ""
+    }],
+    "shopping_lists": [{
+        "list_id": "",
+		"list_name": "",
+        "date_added": "",
+        "ip_address": "",
+        "category": "",
+        "item": "",
+        "quantity": "",
+        "is_active": true,
+        "is_cancelled": false,
+        "is_completed": false
+    }
+    ]
+}

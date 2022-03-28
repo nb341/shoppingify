@@ -1,4 +1,4 @@
-FROM node:16
+FROM node:alpine
 
 
 # Set working directory to app directory
@@ -9,7 +9,7 @@ WORKDIR /app
 RUN npm install nodemon -g
 COPY package.json .
 RUN npm install
-RUN chown -R node.node /app/node_modules
+# RUN chown -R node.node /app/node_modules
 # Copy app source code
 COPY . .
 

@@ -29,7 +29,10 @@ services:
             - POSTGRES_PASSWORD=postgres
             - POSTGRES_PORT=5432
             - POSTGRES_DB=shoppingify
+        depends_on: 
+          - db
     db:
+        container_name: shoppingify-db
         image: postgres:latest
         restart: always
         environment:
