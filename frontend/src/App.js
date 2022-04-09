@@ -11,7 +11,8 @@ import {
 } from '@chakra-ui/react';
 import { Sidebar } from './components/Sidebar';
 import Items from './components/Items';
-
+import ThreewaySplit from './_Layouts/ThreewaySplit';
+import HomePage from './pages/HomePage';
 
 const theme = extendTheme({
   styles: {
@@ -35,9 +36,8 @@ const theme = extendTheme({
 function App() {
   return (
     <ChakraProvider theme={theme}>
-      <Box w={"100vw"}>
-        <Sidebar/>
-        <Items/>
+      <Box maxW={"100vw"}>
+          <HomePage/>
       </Box>
     </ChakraProvider>
   );

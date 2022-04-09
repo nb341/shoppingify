@@ -3,11 +3,10 @@ import FormatListBulletedIcon from "@mui/icons-material/FormatListBulleted";
 import ReplayIcon from '@mui/icons-material/Replay';
 import InsertChartOutlinedTwoToneIcon from '@mui/icons-material/InsertChartOutlinedTwoTone';
 import Logo from '../shared/logo.svg';
-import ShoppingCart from "../shared/source.svg";
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 export const Sidebar = (props) => {
     return(
-        <Box bg="white" height={'100vh'} display={'flex'} flexDirection={'column'} position="fixed" left={0} justifyContent="space-between" p={3} alignItems="center" boxShadow={"sm"} w={{base: "62px",lg: "94px"}} zIndex={"1"}>
+        <>
             
             <Image src={Logo} mt={5}/>
             
@@ -36,6 +35,6 @@ export const Sidebar = (props) => {
                     <Box position="relative" bg="#EB5757" top={'-46px'} left="28px" boxSize={"19px"} zIndex={1} borderRadius="md" color="white" align="center"><Text fontSize="12px" fontWeight="700" >3</Text></Box>
             </Box>
 
-        </Box>
+        </>
     )
 }
